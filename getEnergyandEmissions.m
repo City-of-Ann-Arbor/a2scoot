@@ -23,10 +23,10 @@ Iw = Mw*L^2/2;  % Wheel Inertia (both) (kg m^2)
         %output distTotal and elevationsTotal
 
         [polyline, durationStr] = getPolyline(PointA, PointB);
-        [elevations, resolution, latitudes, longitudes] = getElevationsPolyline(polyline, 'key', 'AIzaSyDquvF0Z2IbWtzhx78TLFZ91wL1kAx5J08');
+        [elevations, resolution, latitudes, longitudes] = getElevationsPolyline(polyline, 'key', 'YOUR_API_KEY');
 
         SAMPLES = 10;
-        API_KEY = 'AIzaSyD2N0YHKRMJtFaXna3Orj4TPy97jD2NJFM';
+        API_KEY = 'YOUR_API_KEY';
 
         cumulativeDist = 0;
         cumElevation = 0;
@@ -56,7 +56,7 @@ Iw = Mw*L^2/2;  % Wheel Inertia (both) (kg m^2)
             coordToCoordDist = linspace(0, d1m, 40); % Distance between coord points in
             %m w/ step size of 40
             % Get elevation between two coordinates 
-            [elevation, resolution] = getElevationsTwo(lat, lon, 'key', 'AIzaSyDquvF0Z2IbWtzhx78TLFZ91wL1kAx5J08' );
+            [elevation, resolution] = getElevationsTwo(lat, lon, 'key', 'YOUR_API_KEY' );
 
             % For loop to get total distance and total elevation
             for elementInDistArray = [1+40*(segmentNum-1)]:[segmentNum*40]
@@ -331,7 +331,7 @@ function [polyline, durationStr] = getPolyline(initialInput, finalInput)
 %initialInput = input(prompt_1, 's'); % makes sure input is a string
 initialInput = regexprep(initialInput, ' ', '%'); % replaces space with & 
 inputType = '&inputtype=textquery';
-key = '&key=AIzaSyDquvF0Z2IbWtzhx78TLFZ91wL1kAx5J08';
+key = '&key=YOUR_API_KEY';
 locationBias = '&locationbias=circle:500@42.2808,83.7430' ;
 %centered at ann arbor's coordinates with radius of 500 m; doesn't work if
 %user's ip address is not in AA, so you need city and state if so
@@ -415,7 +415,7 @@ function [elevation, resolution] = getElevationsTwo(latitude, longitude, varargi
 %   elevation for latitude and longitude arrays.
 %
 %   [elevation, resolution] = getElevations(latitude, longitude, ...
-%     'key', 'AIzaSyCuN8tjAVEaXorgNjS1tDiVC-oc0QBJoYc' );
+%     'key', 'YOUR_API_KEY' );
 %   is an example of a call passing additional attributes to Google Maps 
 %   API webservice, and capturing also the resolution of the data. 
 %   See https://developers.google.com/maps/documentation/elevation/
